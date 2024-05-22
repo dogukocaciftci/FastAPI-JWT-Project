@@ -1,22 +1,22 @@
 import os
 from passlib.context import CryptContext
 
-# Şifreleme için Passlib kullanımı
+# Using Passlib for password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# Şifre doğrulama fonksiyonu
+# Function to verify a plain password against a hashed password
 
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
-# Şifre hashleme fonksiyonu
+# Function to hash a plain password
 
 
 def get_password_hash(password):
     return pwd_context.hash(password)
 
-# Kullanıcı verilerini dosyadan okuma fonksiyonu
+# Function to read user data from a file
 
 
 def read_users_from_file(file_path):
@@ -28,5 +28,5 @@ def read_users_from_file(file_path):
     return users
 
 
-# Kullanıcı verilerini yükleme
+# Load user data
 users = read_users_from_file("app/user_data.txt")

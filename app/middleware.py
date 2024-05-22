@@ -4,7 +4,7 @@ from jose import JWTError, jwt
 
 from .config import SECRET_KEY, ALGORITHM
 
-# JWT doğrulama middleware sınıfı
+# JWT validation middleware class
 
 
 class JWTBearer(HTTPBearer):
@@ -25,7 +25,7 @@ class JWTBearer(HTTPBearer):
             raise HTTPException(
                 status_code=403, detail="Invalid authorization code.")
 
-    # JWT doğrulama fonksiyonu
+    # JWT validation function
     def verify_jwt(self, jwtoken: str) -> bool:
         isTokenValid: bool = False
         try:

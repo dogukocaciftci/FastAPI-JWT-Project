@@ -1,21 +1,21 @@
 from passlib.context import CryptContext
 
-# Passlib kullanarak bcrypt şifreleme şeması ile bir şifreleme bağlamı oluşturma
+# Creating a password context with bcrypt hashing scheme using Passlib
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# Verilen şifreyi hashleyip döndüren fonksiyon
+# Function to hash a given password and return the hashed password
 
 
 def get_password_hash(password):
     return pwd_context.hash(password)
 
 
-# Hashlenecek kullanıcı adı ve şifre çiftlerini içeren sözlük
+# Dictionary containing username and password pairs to be hashed
 users = {
     "testuser": "testpassword"
 }
 
-# Her kullanıcı adı ve şifre çifti için hashlenmiş şifreyi oluşturup yazdırma
+# Generating and printing the hashed password for each username and password pair
 for username, password in users.items():
     hashed_password = get_password_hash(password)
     print(f"{username}:{hashed_password}")

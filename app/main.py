@@ -8,56 +8,56 @@ from .middleware import JWTBearer
 from .auth import verify_password, users
 from .config import SECRET_KEY, ALGORITHM, JWT_TIMEOUT
 
-# FastAPI uygulaması oluşturma
+# Creating a FastAPI application
 app = FastAPI()
 
-# Token modelini tanımlama
+# Defining the Token model
 
 
 class Token(BaseModel):
     access_token: str
     token_type: str
 
-# Token verilerini tanımlama
+# Defining the TokenData model
 
 
 class TokenData(BaseModel):
     username: Optional[str] = None
 
-# Kullanıcı modelini tanımlama
+# Defining the User model
 
 
 class User(BaseModel):
     username: str
     password: str
 
-# Kullanıcı giriş endpointi
+# User login endpoint
 
 
 @app.post("/token", response_model=Token)
 async def login(user: User):
-    # Kullanıcı doğrulama
+    # User validation
     stored_password = users.get(user.username)
     if not stored_password or not verify_password(user.password, stored_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
         )
-    # Access token oluşturma
+    # Creating the access token
     access_token_expires = timedelta(minutes=JWT_TIMEOUT)
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
     return {"access_token": access_token, "token_type": "bearer"}
 
-# Korumalı endpoint örneği
+# Example of a protected endpoint
 
 
 @app.get("/protected", dependencies=[Depends(JWTBearer())])
 async def protected_route():
     return {"message": "You are authorized"}
 
-# Access token oluşturma fonksiyonu
+# Function to create an access token
 
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
