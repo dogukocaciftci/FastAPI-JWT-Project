@@ -12,6 +12,13 @@ This project implements JWT authentication using FastAPI. It includes the follow
 - Docker
 - Docker Compose
 
+## Project Screenshots
+
+![GET Request](GET.png)
+![POST Request](POST.png)
+
+...
+
 ## Project Structure
 
 ```
