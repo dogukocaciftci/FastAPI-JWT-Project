@@ -1,8 +1,3 @@
-Tabii, detaylı bir README.md dosyası oluşturalım ve proje adımlarını ayrıntılı bir şekilde açıklayalım.
-
-#### README.md
-
-```markdown
 # FastAPI JWT Authentication Project
 
 This project implements JWT authentication using FastAPI. It includes the following features:
