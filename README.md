@@ -14,10 +14,9 @@ This project implements JWT authentication using FastAPI. It includes the follow
 
 ## Project Screenshots
 
-![GET Request](GET.png)
 ![POST Request](POST.png)
+![GET Request](GET.png)
 
-...
 
 ## Project Structure
 
