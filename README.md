@@ -35,7 +35,7 @@ fastapi_jwt_project/
 
 Clone the repository to your local machine:
 ```bash
-git clone https://github.com/dogukocaciftci/fastapi-jwt-project.git
+git clone https://github.com/dogukocaciftci/FastAPI-JWT-Project
 cd fastapi-jwt-project
 ```
 
