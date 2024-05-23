@@ -4,6 +4,7 @@ This project implements JWT authentication using FastAPI. It includes the follow
 - User login with JWT token generation
 - JWT token validation
 - Protected endpoints accessible only with a valid JWT token
+- Role-based authorization for different HTTP methods
 
 ## Prerequisites
 
@@ -194,6 +195,24 @@ pip install -r requirements.txt
    }
    ```
 
+### Role-Based Authorization
+
+Endpoints have role-based authorization based on HTTP methods:
+
+- **GET /items/**: Accessible by users with roles `user` and `admin`.
+- **POST /items/**: Accessible only by users with the `admin` role.
+- **PUT /items/{item_id}**: Accessible only by users with the `admin` role.
+- **DELETE /items/{item_id}**: Accessible only by users with the `admin` role.
+
+Ensure that the JWT token includes the user's role in the payload:
+
+```json
+{
+    "sub": "testuser",
+    "role": "admin",
+    "exp": 1716459118
+}
+```
 
 ## Contributing
 
