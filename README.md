@@ -216,5 +216,5 @@ Ensure that the JWT token includes the user's role in the payload:
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests.
+Feel free to submit issues and enhancement requests !
 
